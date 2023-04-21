@@ -16,15 +16,6 @@ body {
 .img-info__link {
   font-family: "Fantasy", cursive;
 }
-
-@media (max-width:768px) {
-
-  .img-info { 
-    text-align: center;
-  }
-
-}
-
 .main {
   display: block;
   width: 500px;
@@ -109,7 +100,6 @@ li {
 li > * {
   vertical-align: middle;
 }
-
 li > input[type="checkbox"] {
   margin: 0 10px;
 }
@@ -147,4 +137,12 @@ ul li.edit-mode input[type="text"] {
 }
 ul li.edit-mode label {
   display:none;
+}
+
+@media (max-width:768px) {
+
+  .img-info { 
+    text-align: center;
+  }
+  
 }
