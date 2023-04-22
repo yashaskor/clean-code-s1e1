@@ -9,12 +9,12 @@
 // Event handling, user interaction is what starts the code execution.
 
 var taskInput=document.getElementById("new-task");//Add a new task.
-var addButton=document.getElementsByTagName("button")[0];//first button
+var addButton=document.querySelector(".button");//first button
 var incompleteTaskHolder=document.getElementById("incomplete-tasks");//ul of #incomplete-tasks
 var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
 
 
-//New task list item
+// New task list item
 var createNewTaskElement=function(taskString){
 
     var listItem=document.createElement("li");
@@ -60,8 +60,6 @@ var createNewTaskElement=function(taskString){
     return listItem;
 }
 
-
-
 var addTask=function(){
     console.log("Add Task...");
     //Create a new list item with the text from the #new-task:
@@ -73,15 +71,12 @@ var addTask=function(){
     bindTaskEvents(listItem, taskCompleted);
 
     taskInput.value="";
-
 }
 
 //Edit an existing task.
-
 var editTask=function(){
     console.log("Edit Task...");
     console.log("Change 'edit' to 'save'");
-
 
     var listItem=this.parentNode;
 
@@ -105,7 +100,6 @@ var editTask=function(){
     listItem.classList.toggle("edit-mode");
 };
 
-
 //Delete task.
 var deleteTask=function(){
     console.log("Delete Task...");
@@ -116,7 +110,6 @@ var deleteTask=function(){
     ul.removeChild(listItem);
 
 }
-
 
 //Mark task completed
 var taskCompleted=function(){
@@ -129,7 +122,6 @@ var taskCompleted=function(){
 
 }
 
-
 var taskIncomplete=function(){
     console.log("Incomplete Task...");
 //Mark task as incomplete.
@@ -139,8 +131,6 @@ var taskIncomplete=function(){
     incompleteTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem,taskCompleted);
 }
-
-
 
 var ajaxRequest=function(){
     console.log("AJAX Request");
@@ -162,7 +152,6 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
     var editButton=taskListItem.querySelector(".edit__btn");
     var deleteButton=taskListItem.querySelector(".delete__btn");
 
-
     //Bind editTask to edit button.
     editButton.onclick=editTask;
     //Bind deleteTask to delete button.
@@ -179,17 +168,11 @@ for (var i=0; i<incompleteTaskHolder.children.length;i++){
     bindTaskEvents(incompleteTaskHolder.children[i],taskCompleted);
 }
 
-
-
-
 //cycle over completedTasksHolder ul list items
 for (var i=0; i<completedTasksHolder.children.length;i++){
     //bind events to list items chldren(tasksIncompleted)
     bindTaskEvents(completedTasksHolder.children[i],taskIncomplete);
 }
-
-
-
 
 // Issues with usability don't get seen until they are in front of a human tester.
 
