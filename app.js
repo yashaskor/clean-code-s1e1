@@ -25,25 +25,28 @@ var createNewTaskElement=function(taskString){
     var label=document.createElement("label");//label
     //input (text)
     var editInput=document.createElement("input");//text
-    //edit__btn
+    //edit btn
     var editButton=document.createElement("button");//edit__btn button
 
-    //delete__btn
-    var deleteButton=document.createElement("button");//delete__btn button
-    var deleteButtonImg=document.createElement("img");//delete__btn button image
+    //delete btn
+    var deleteButton=document.createElement("button");//delete button
+    var deleteButtonImg=document.createElement("img");//delete button image
 
     label.innerText=taskString;
-    label.className='task';
+    label.className='task__label';
 
     //Each elements, needs appending
     checkBox.type="checkbox";
+    checkBox.className="checkbox";
     editInput.type="text";
-    editInput.className="task";
+    editInput.className="task invisible";
+    listItem.className="general-li";
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
-    editButton.className="edit__btn";
+    editButton.className="button edit__btn";
 
-    deleteButton.className="delete__btn";
+    deleteButton.className="button delete__btn";
+    deleteButtonImg.className="button__img";
     deleteButtonImg.src='./remove.svg';
     deleteButton.appendChild(deleteButtonImg);
 
@@ -155,9 +158,9 @@ addButton.addEventListener("click",ajaxRequest);
 var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
     console.log("bind list item events");
 //select ListItems children
-    var checkBox=taskListItem.querySelector("input[type=checkbox]");
-    var editButton=taskListItem.querySelector("button.edit__btn");
-    var deleteButton=taskListItem.querySelector("button.delete__btn");
+    var checkBox=taskListItem.querySelector(".checkbox");
+    var editButton=taskListItem.querySelector(".edit__btn");
+    var deleteButton=taskListItem.querySelector(".delete__btn");
 
 
     //Bind editTask to edit button.
